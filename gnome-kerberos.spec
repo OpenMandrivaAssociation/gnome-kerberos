@@ -11,7 +11,7 @@ BuildRequires:	texinfo
 BuildRequires:  desktop-file-utils
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}_icons.tar.bz2
-Summary:	Kerberos 5 tools for GNOME.
+Summary:	Kerberos 5 tools for GNOME
 
 %description
 This package contains krb5, a tool for managing Kerberos 5 tickets, and
