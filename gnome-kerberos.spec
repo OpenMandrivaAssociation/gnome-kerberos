@@ -10,6 +10,7 @@ BuildRequires:	texinfo
 BuildRequires:  desktop-file-utils
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}_icons.tar.bz2
+Patch0:		krb-desktop-entry-fix.patch
 Summary:	Kerberos 5 tools for GNOME
 
 %description
@@ -18,6 +19,7 @@ gkadmin, a tool for managing Kerberos realms that uses the kadmin protocols.
 
 %prep
 %setup -q -a 1
+%patch0 -p0
 
 %build
 # never call autoconf. configure.in and configure are out of sync.
