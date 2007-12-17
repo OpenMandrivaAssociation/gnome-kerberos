@@ -50,7 +50,7 @@ Exec=%{_bindir}/krb5
 Icon=%{name}.png
 Categories=Network;
 Name=Gnome-Kerberos
-Comment=Gnome-Kerberos
+Comment=Kerberos 5 tools for GNOME
 EOF
 
 %post
