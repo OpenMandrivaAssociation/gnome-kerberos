@@ -42,11 +42,15 @@ install -m644 %{name}-32.png -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
 install -m644 %{name}-48.png -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 
 #%menu entries 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF >$RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{_bindir}/krb5" needs="x11" \
-icon="%{name}.png" section="Networking/Other" \
-title="Gnome-Kerberos" longtitle="Gnome-Kerberos"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{_bindir}/krb5
+Icon=%{name}.png
+Categories=Network;
+Name=Gnome-Kerberos
+Comment=Gnome-Kerberos
 EOF
 
 %post
@@ -64,7 +68,7 @@ EOF
 %{_datadir}/gnome/apps/Utilities/krb5.desktop
 %{_datadir}/pixmaps/kerberos.png
 %{_datadir}/%{name}/
-%{_menudir}/%{name}
+%{_datadir}/applications/mandriva-%{name}.desktop
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
