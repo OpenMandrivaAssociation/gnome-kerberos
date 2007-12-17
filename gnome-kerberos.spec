@@ -3,7 +3,6 @@ Version: 0.3.2
 Release:  %mkrel 2
 License:	GPL
 Group:		Networking/Other
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	krb5-devel
 BuildRequires:	libglade2.0-devel
 BuildRequires:	popt-devel
