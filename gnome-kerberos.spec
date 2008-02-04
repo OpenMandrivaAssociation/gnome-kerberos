@@ -48,7 +48,7 @@ cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
 [Desktop Entry]
 Type=Application
 Exec=%{_bindir}/krb5
-Icon=%{name}.png
+Icon=%{name}
 Categories=Network;
 Name=Gnome-Kerberos
 Comment=Kerberos 5 tools for GNOME
