@@ -12,6 +12,7 @@ BuildRequires:  desktop-file-utils
 Source0:	%{name}-%{version}.tar.bz2
 Source1:	%{name}_icons.tar.bz2
 Patch0:		krb-desktop-entry-fix.patch
+Patch1:		gnome-kerberos-0.3.2-fix-str-fmt.patch
 Summary:	Kerberos 5 tools for GNOME
 
 %description
@@ -21,10 +22,11 @@ gkadmin, a tool for managing Kerberos realms that uses the kadmin protocols.
 %prep
 %setup -q -a 1
 %patch0 -p0
+%patch1 -p0
 
 %build
 # never call autoconf. configure.in and configure are out of sync.
-%configure --with-krb5=%{_sysconfdir}/kerberos
+%configure2_5x --with-krb5=%{_sysconfdir}/kerberos
 %make
 
 %install
