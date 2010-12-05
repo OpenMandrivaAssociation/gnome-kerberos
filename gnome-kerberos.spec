@@ -1,6 +1,6 @@
 Name:		gnome-kerberos
 Version: 0.3.2
-Release:  %mkrel 5
+Release:  %mkrel 6
 License:	GPL
 Group:		Networking/Other
 BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
