@@ -1,0 +1,10 @@
+diff -p -up ./krb5.desktop.in.in.tv ./krb5.desktop.in.in
+--- ./krb5.desktop.in.in.tv	2007-12-17 22:26:12.000000000 +0100
++++ ./krb5.desktop.in.in	2007-12-17 22:26:17.000000000 +0100
+@@ -4,5 +4,5 @@ _Comment=Kerberos Ticket Manager
+ Exec=@prefix@/bin/krb5
+ Terminal=0
+ Type=Application
+-Icon=kerberos.png
++Icon=kerberos
+ Encoding=UTF-8
