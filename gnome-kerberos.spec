@@ -1,12 +1,11 @@
 Name:		gnome-kerberos
-Version: 0.3.2
-Release:  %mkrel 6
+Version:	0.3.2
+Release:	%mkrel 6
 License:	GPL
 Group:		Networking/Other
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires:	krb5-devel
-BuildRequires:	libglade2.0-devel
-BuildRequires:	popt-devel
+BuildRequires:	pkgconfig(libglade-2.0)
+BuildRequires:	pkgconfig(popt)
 BuildRequires:	texinfo
 BuildRequires:  desktop-file-utils
 Source0:	%{name}-%{version}.tar.bz2
@@ -27,25 +26,24 @@ gkadmin, a tool for managing Kerberos realms that uses the kadmin protocols.
 %build
 # never call autoconf. configure.in and configure are out of sync.
 %configure2_5x --with-krb5=%{_sysconfdir}/kerberos
-%make
+%make LIBS="-lcom_err"
 
 %install
-[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
 %makeinstall
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Utilities/
-mv $RPM_BUILD_ROOT%{_datadir}/applications/redhat-krb5.desktop $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Utilities/krb5.desktop
+mkdir -p %{buildroot}%{_datadir}/gnome/apps/Utilities/
+mv %{buildroot}%{_datadir}/applications/redhat-krb5.desktop %{buildroot}%{_datadir}/gnome/apps/Utilities/krb5.desktop
 
 rm -rf RPM_BUILD_ROOT%{_datadir}/applications
 
 %find_lang %name
 
 #icons entries
-install -m644 %{name}-16.png -D $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
-install -m644 %{name}-32.png -D $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-install -m644 %{name}-48.png -D $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
+install -m644 %{name}-16.png -D %{buildroot}%{_miconsdir}/%{name}.png
+install -m644 %{name}-32.png -D %{buildroot}%{_iconsdir}/%{name}.png
+install -m644 %{name}-48.png -D %{buildroot}%{_liconsdir}/%{name}.png
 
 #%menu entries 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+mkdir -p %{buildroot}%{_datadir}/applications/
 cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
 [Desktop Entry]
 Type=Application
@@ -56,21 +54,7 @@ Name=Gnome-Kerberos
 Comment=Kerberos 5 tools for GNOME
 EOF
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
-%clean
-[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
-
 %files -f %{name}.lang
-%defattr(-, root, root)
 %doc README COPYING AUTHORS ChangeLog INSTALL ABOUT-NLS
 %{_datadir}/gnome/apps/Utilities/krb5.desktop
 %{_datadir}/pixmaps/kerberos.png
@@ -80,4 +64,3 @@ EOF
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_bindir}/*
-
