@@ -1,6 +1,6 @@
 Name:		gnome-kerberos
 Version:	0.3.2
-Release:	%mkrel 6
+Release:	7
 License:	GPL
 Group:		Networking/Other
 BuildRequires:	krb5-devel
