@@ -3,6 +3,11 @@ Version:	0.3.2
 Release:	7
 License:	GPL
 Group:		Networking/Other
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	krb5-devel
 BuildRequires:	pkgconfig(libglade-2.0)
 BuildRequires:	pkgconfig(popt)
