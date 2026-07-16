@@ -1,6 +1,6 @@
 Name:		gnome-kerberos
 Version:	0.3.2
-Release:	7
+Release:	8
 License:	GPL
 Group:		Networking/Other
 BuildRequires:	autoconf
